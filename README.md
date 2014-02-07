@@ -1,8 +1,6 @@
 WonderAdapter
 ============
 
-![Logo](website/static/logo.png)
-
 How many times do you copy ArrayAdapter, CursorAdapter and ViewHolders code? I've developed this library based mostly on
 the idea of [UniversalAdapter][1] library, but I've implemented a few improvements like ViewHolder pattern and View
 Injection, to be faster writing your adapters.
@@ -27,8 +25,9 @@ Usage
 
 Download
 --------
+Not yet.
 
-Download [the latest JAR][2] or grab via Maven:
+Download [the latest JAR][4] or grab via Maven:
 ```xml
 <! -- Coming soon -->
 ```
@@ -76,3 +75,4 @@ License
 [1]: https://github.com/yDelouis/UniversalAdapter
 [2]: https://github.com/JakeWharton/butterknife
 [3]: https://raw.github.com/m3n0R/WonderAdapter/master/art/screen_demo_1.png
+[4]:
