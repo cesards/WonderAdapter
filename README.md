@@ -2,13 +2,8 @@ WonderAdapter
 ============
 
 How many times do you copy ArrayAdapter, CursorAdapter and ViewHolders code? I've developed this library based mostly on
-the idea of [UniversalAdapter][1] library, but I've implemented a few improvements like ViewHolder pattern and View
-Injection, to be faster writing your adapters.
-
-This library uses [ButterKnife][2] which uses annotation processing to generate code that does direct filed assignment
-of your views, so __remember to enable Annotations in whatever IDE you're using__
-
-In __IntelliJ 13__ Go to Preferences --> Compiler --> Annotation processors and check __"Enable annotation processing"__
+the idea of [UniversalAdapter][1] library, but I've implemented a few improvements like ViewHolder pattern, multi view
+and cursor compatibility.
 
 Screenshots
 -----------
@@ -18,9 +13,58 @@ Screenshots
 Usage
 -----
 
+You just have to use the adapter that fits better to your needs. For now, there are only 3 wonder adapters you can use:
+
+* WSingleArrayAdapter
+* WMultiArrayAdapter
+* WCursorAdapter
+
+Steps to use any of these adapters within a ListView:
+
+1. Create Custom ```Holder``` and let implement ```SingleWonder, MultiWonder or CursorWonder``` depending on the Adapter
+we want to use with.
+..* ```T``` is the class of the item we want to show.
+..* ```W``` the Holder class.
+2. Basic methods to implement (on single views):
+..* ```W newInstance()``` returns an instance of ```W```(holder) for every row in the list. Our holder contains row view fields initialized.
+..* ```void bind(...)``` needed to draw desired object fields on the initialized view fields contained inside our class ```W```.
+..* ```View inflateView(...)``` needs explanation? :-).
+
+__Example: ListView with array list of items within a single row view__
 ```java
-// TODO
+WSingleArrayAdapter<Wonder, SingleViewHolder> adapter = new WSingleArrayAdapter(this, getData(cursor), new SingleViewHolder());
+listView.setAdapter(adapter);
 ```
+and our SingleViewHolder implementation:
+```java
+public class SingleViewHolder implements SingleWonder<Wonder, SingleViewHolder> {
+
+  // UI
+  @InjectView(R.id.row_wonder_image) ImageView imageView;
+  @InjectView(R.id.row_wonder_title) TextView titleView;
+
+  @Override public SingleViewHolder newInstance() {
+    return new SingleViewHolder();
+  }
+
+  @Override public void bind(Context context, Wonder item) {
+    Picasso.with(context).load(item.getImage()).into(imageView);
+    titleView.setText(item.getTitle());
+  }
+
+  @Override public View inflateView(LayoutInflater inflater, ViewGroup parent) {
+    View view = inflater.inflate(R.layout.row_wonder, parent, false);
+    ButterKnife.inject(this, view);
+    return view;
+  }
+
+}
+
+```
+I've used [Jake Wharton's][6] [Butterknife][5] library to avoid using findViewById on every view in our row layout :-)
+
+
+[Check][2] the code for full demo samples.
 
 
 Download
@@ -71,8 +115,8 @@ License
 
 
 
-
 [1]: https://github.com/yDelouis/UniversalAdapter
-[2]: https://github.com/JakeWharton/butterknife
+[2]: https://github.com/m3n0R/WonderAdapters/tree/master/demo/src/main/java/com/dogmalabs/wonderadapter/demo/ui
 [3]: https://raw.github.com/m3n0R/WonderAdapter/master/art/screen_demo_1.png
-[4]:
+[5]: https://github.com/JakeWharton/butterknife
+[6]: https://github.com/JakeWharton
