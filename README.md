@@ -82,11 +82,11 @@ or Gradle:
 
 TODO'S
 --------
-..* CursorAdapter with multiple views support
-..* My ```WMultiArrayAdapter``` extends Object for a reason. It's very possible to draw our headers from
+* CursorAdapter with multiple views support
+* My ```WMultiArrayAdapter``` extends Object for a reason. It's very possible to draw our headers from
 another list (having two separated array lists or more, depending the number of custom view rows we would like to use)
 I can discuss whether use Generics or Object...
-..* I have to study carefully how to interact with other libraries, like [StickyListHeaders][7], [pinned-section-listview][8] and other multi view ones.
+* I have to study carefully how to interact with other libraries, like [StickyListHeaders][7], [pinned-section-listview][8] and other multi view ones.
 
 
 Developed By
