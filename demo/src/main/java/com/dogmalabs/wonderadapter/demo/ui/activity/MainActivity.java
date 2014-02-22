@@ -32,12 +32,15 @@ public class MainActivity extends ActionBarActivity {
     ButterKnife.inject(this);
   }
 
-  @OnClick(R.id.main_array) public void onArrayAdapterClick() {
-    startActivity(new Intent(this, ArrayListActivity.class));
+  @OnClick(R.id.single_view_arrayadapter) public void onSingleViewArrayAdapterClick() {
+    startActivity(new Intent(this, SingleViewActivity.class));
   }
 
-  @OnClick(R.id.main_cursor) public void onCursorAdapterClick() {
-    startActivity(new Intent(this, CursorListActivity.class));
+  @OnClick(R.id.multiple_view_arrayadapter) public void onMultipleViewArrayAdapterClick() {
+    startActivity(new Intent(this, MultipleViewActivity.class));
   }
 
+  @OnClick(R.id.single_view_cursoradapter) public void onSingleViewCursorAdapterClick() {
+    startActivity(new Intent(this, CursorActivity.class));
+  }
 }

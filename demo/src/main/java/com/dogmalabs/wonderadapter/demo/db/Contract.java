@@ -36,6 +36,7 @@ public final class Contract extends BaseContract {
       public static final class Column implements BaseColumns {
         public static final String TITLE = "title";
         public static final String IMAGE_URL = "image_url";
+        public static final String COUNTRY = "country";
       }
     }
   }
@@ -50,6 +51,7 @@ public final class Contract extends BaseContract {
       public static final class Column implements BaseColumns {
         public static final String TITLE = "title";
         public static final String IMAGE_URL = "image_url";
+        public static final String COUNTRY = "country";
       }
     }
   }

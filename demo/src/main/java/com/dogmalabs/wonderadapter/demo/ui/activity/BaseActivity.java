@@ -30,7 +30,7 @@ import com.dogmalabs.wonderadapter.demo.model.Wonder;
 /**
  * Created by cesar on 07/02/14.
  */
-public abstract class BaseListActivity extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity {
 
   // Views
   @InjectView(android.R.id.list) ListView listView;

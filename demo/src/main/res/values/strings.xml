@@ -2,7 +2,8 @@
 <resources>
 
   <string name="app_name">WonderAdapter Demo</string>
-  <string name="arrayadapter">Wonder ArrayAdapter</string>
-  <string name="cursoradapter">Wonder CursorAdapter</string>
+  <string name="single_view_arrayadapter">Single View ArrayAdapter</string>
+  <string name="single_view_cursoradapter">Single View CursorAdapter</string>
+  <string name="multiple_view_arrayadapter">Multiple View ArrayAdapter</string>
 
 </resources>

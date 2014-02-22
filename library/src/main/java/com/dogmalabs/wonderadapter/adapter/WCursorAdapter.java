@@ -13,30 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dogmalabs.wonderadapter;
+
+package com.dogmalabs.wonderadapter.adapter;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import butterknife.ButterKnife;
-import java.util.List;
+import com.dogmalabs.wonderadapter.CursorWonder;
 
-public class WArrayAdapter<T, W extends ArrayWonder<T, W>> extends ArrayAdapter<T> {
+public class WCursorAdapter<W extends CursorWonder<W>> extends CursorAdapter {
 
-  // Vars
+  // Controller/logic fields
   private W wonder;
   private LayoutInflater inflater;
 
   // Constructors
-  public WArrayAdapter(Context context, T[] data, W wonder) {
-    super(context, 0, data);
+  public WCursorAdapter(Context context, W wonder) {
+    super(context, null, false);
     init(context, wonder);
   }
 
-  public WArrayAdapter(Context context, List<T> data, W wonder) {
-    super(context, 0, data);
+  /**
+   * 0 prevents the CursorAdapter from doing its own observing of the Cursor,
+   * which is not needed since when a change happens you will get a new Cursor
+   * throw another call here.
+   */
+  public WCursorAdapter(Context context, Cursor c, W wonder) {
+    super(context, c, 0);
     init(context, wonder);
   }
 
@@ -45,17 +51,17 @@ public class WArrayAdapter<T, W extends ArrayWonder<T, W>> extends ArrayAdapter<
     inflater = LayoutInflater.from(context);
   }
 
-  @Override public View getView(int position, View convertView, ViewGroup parent) {
-    final W w;
-    if (convertView == null) {
-      w = (W) wonder.newInstance();
-      convertView = inflater.inflate(w.getLayout(), parent, false);
-      ButterKnife.inject(w, convertView);
-      convertView.setTag(w);
-    } else {
-      w = (W) convertView.getTag();
-    }
-    w.bind(getContext(), getItem(position));
+  @Override
+  public void bindView(View view, Context context, Cursor cursor) {
+    final W w = (W) view.getTag();
+    w.bind(context, cursor);
+  }
+
+  @Override
+  public View newView(Context context, Cursor cursor, ViewGroup parent) {
+    final W w = wonder.newInstance();
+    View convertView = w.inflateView(inflater, parent);
+    convertView.setTag(w);
     return convertView;
   }
 }

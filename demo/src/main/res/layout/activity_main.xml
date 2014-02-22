@@ -20,23 +20,26 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:padding="@dimen/padding_large">
 
   <Button
-      android:id="@+id/main_array"
-      android:layout_width="wrap_content"
+      android:id="@+id/single_view_arrayadapter"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/view_normal"
-      android:paddingLeft="@dimen/padding_large"
-      android:paddingRight="@dimen/padding_large"
-      android:layout_marginBottom="@dimen/padding_large"
-      android:text="@string/arrayadapter"/>
+      android:layout_marginBottom="@dimen/padding_medium"
+      android:text="@string/single_view_arrayadapter"/>
 
   <Button
-      android:id="@+id/main_cursor"
-      android:layout_width="wrap_content"
-      android:paddingRight="@dimen/padding_large"
-      android:paddingLeft="@dimen/padding_large"
+      android:id="@+id/multiple_view_arrayadapter"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/view_normal"
-      android:text="@string/cursoradapter"/>
+      android:layout_marginBottom="@dimen/padding_medium"
+      android:text="@string/multiple_view_arrayadapter"/>
+
+  <Button
+      android:id="@+id/single_view_cursoradapter"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/view_normal"
+      android:text="@string/single_view_cursoradapter"/>
 
 </LinearLayout>

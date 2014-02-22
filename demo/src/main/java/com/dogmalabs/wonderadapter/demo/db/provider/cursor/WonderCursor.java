@@ -36,6 +36,7 @@ public class WonderCursor extends BaseCursorHelper<Wonder> {
     Wonder wonder = new Wonder();
     wonder.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(Contract.Cursor.Wonders.Column.TITLE)));
     wonder.setImage(cursor.getString(cursor.getColumnIndexOrThrow(Contract.Cursor.Wonders.Column.IMAGE_URL)));
+    wonder.setCountry(cursor.getString(cursor.getColumnIndexOrThrow(Contract.Cursor.Wonders.Column.COUNTRY)));
     return wonder;
   }
 }

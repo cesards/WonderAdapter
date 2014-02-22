@@ -20,30 +20,28 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import com.dogmalabs.wonderadapter.WCursorAdapter;
-import com.dogmalabs.wonderadapter.demo.ui.CursorView;
+import com.dogmalabs.wonderadapter.adapter.WCursorAdapter;
+import com.dogmalabs.wonderadapter.demo.ui.CursorViewHolder;
 import com.dogmalabs.wonderadapter.demo.util.CursorUtil;
 
 /**
  * Created by cesar on 07/02/14.
  */
-public class CursorListActivity extends BaseListActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class CursorActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
   // Constants
   private static final int LOADER_ID_WONDERS = 07021252;
-  // Vars
+
+  // Controller/logic fields
   private WCursorAdapter adapter;
 
-  @Override public void setInitData() {
-    adapter = new WCursorAdapter(this, new CursorView());
-    listView.setAdapter(adapter);
-  }
-
+  // Lifecycle
   @Override public void onResume() {
     super.onResume();
     getSupportLoaderManager().restartLoader(LOADER_ID_WONDERS, null, this);
   }
 
+  // Public
   @Override public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
     return new CursorUtil(this).getWondersLoader();
   }
@@ -55,4 +53,10 @@ public class CursorListActivity extends BaseListActivity implements LoaderManage
   @Override public void onLoaderReset(Loader<Cursor> cursorLoader) {
     adapter.swapCursor(null);
   }
+
+  @Override public void setInitData() {
+    adapter = new WCursorAdapter(this, new CursorViewHolder());
+    listView.setAdapter(adapter);
+  }
+
 }

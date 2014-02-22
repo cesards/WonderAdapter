@@ -17,39 +17,37 @@
 package com.dogmalabs.wonderadapter.demo.ui;
 
 import android.content.Context;
-import android.database.Cursor;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import butterknife.ButterKnife;
 import butterknife.InjectView;
-import com.dogmalabs.wonderadapter.BaseWonder;
-import com.dogmalabs.wonderadapter.CursorWonder;
+import com.dogmalabs.wonderadapter.SingleWonder;
 import com.dogmalabs.wonderadapter.demo.R;
-import com.dogmalabs.wonderadapter.demo.db.provider.cursor.WonderCursor;
 import com.dogmalabs.wonderadapter.demo.model.Wonder;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by cesar on 07/02/14.
- */
-public class CursorView implements CursorWonder<CursorView> {
+public class SingleViewHolder implements SingleWonder<Wonder, SingleViewHolder> {
 
-  // Views
+  // UI
   @InjectView(R.id.row_wonder_image) ImageView imageView;
   @InjectView(R.id.row_wonder_title) TextView titleView;
-  // Vars
-  private final WonderCursor wonderCursor = new WonderCursor();
 
-  @Override public void bind(Context context, Cursor cursor) {
-    final Wonder wonder = wonderCursor.readCursor(context, cursor);
-    Picasso.with(context).load(wonder.getImage()).into(imageView);
-    titleView.setText(wonder.getTitle());
+  @Override public SingleViewHolder newInstance() {
+    return new SingleViewHolder();
   }
 
-  @Override public BaseWonder newInstance() {
-    return new CursorView();
+  @Override public void bind(Context context, Wonder item) {
+    Picasso.with(context).load(item.getImage()).into(imageView);
+    titleView.setText(item.getTitle());
   }
 
-  @Override public int getLayout() {
-    return R.layout.row_wonder;
+  @Override public View inflateView(LayoutInflater inflater, ViewGroup parent) {
+    View view = inflater.inflate(R.layout.row_wonder, parent, false);
+    ButterKnife.inject(this, view);
+    return view;
   }
+
 }

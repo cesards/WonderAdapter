@@ -40,6 +40,7 @@ android {
 
 dependencies {
   compile project(':library')
-  compile 'com.android.support:appcompat-v7:+'
+  compile 'com.android.support:appcompat-v7:19.0.1'
   compile 'com.squareup.picasso:picasso:2.2.0'
+  compile 'com.jakewharton:butterknife:4.0.1'
 }

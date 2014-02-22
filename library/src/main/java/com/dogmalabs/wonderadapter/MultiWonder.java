@@ -16,10 +16,21 @@
 
 package com.dogmalabs.wonderadapter;
 
-public interface BaseWonder<W extends BaseWonder<W>> {
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public interface MultiWonder<W> {
+
+  public void bind(Context context, Object item, int viewType);
 
   public W newInstance();
 
-  public int getLayout();
+  public int getViewTypeCount();
+
+  public int getViewType(Object object);
+
+  public View inflateView(LayoutInflater inflater, ViewGroup parent, int viewType);
 
 }
