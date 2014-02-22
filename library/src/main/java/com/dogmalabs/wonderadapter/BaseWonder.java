@@ -16,14 +16,6 @@
 
 package com.dogmalabs.wonderadapter;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-public interface CursorWonder<W> extends BaseWonder<W> {
-  public void bind(Context context, Cursor cursor);
-
-  public View inflateView(LayoutInflater inflater, ViewGroup parent);
+public interface BaseWonder<W> {
+  public W newInstance();
 }

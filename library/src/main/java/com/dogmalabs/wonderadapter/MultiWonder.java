@@ -21,16 +21,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public interface MultiWonder<W> {
+public interface MultiWonder<W> extends BaseWonder<W> {
 
   public void bind(Context context, Object item, int viewType);
-
-  public W newInstance();
 
   public int getViewTypeCount();
 
   public int getViewType(Object object);
 
   public View inflateView(LayoutInflater inflater, ViewGroup parent, int viewType);
-
 }
