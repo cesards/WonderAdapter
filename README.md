@@ -15,8 +15,8 @@ Usage
 
 You just have to use the adapter that fits better to your needs. For now, there are only 3 wonder adapters you can use:
 
-* WSingleArrayAdapter
-* WMultiArrayAdapter
+* WArrayAdapter
+* WBaseAdapter
 * WCursorAdapter
 
 Steps to use any of these adapters within a ListView:
@@ -32,7 +32,7 @@ we want to use with.
 
 __Example: ListView with array list of items within a single row view__
 ```java
-WSingleArrayAdapter<Wonder, SingleViewHolder> adapter = new WSingleArrayAdapter(this, getData(cursor), new SingleViewHolder());
+WArrayAdapter<Wonder, SingleViewHolder> adapter = new WArrayAdapter(this, getData(cursor), new SingleViewHolder());
 listView.setAdapter(adapter);
 ```
 and our SingleViewHolder implementation:
