@@ -22,13 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import com.dogmalabs.wonderadapter.SingleWonder;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by menor on 22/02/14.
  */
-public class WSingleArrayAdapter<T, W extends SingleWonder<T, W>> extends ArrayAdapter<T> {
+public class WArrayAdapter<T, W extends SingleWonder<T, W>> extends ArrayAdapter<T> {
 
   // Controller/logic fields
   private W wonder;
@@ -37,12 +36,12 @@ public class WSingleArrayAdapter<T, W extends SingleWonder<T, W>> extends ArrayA
   protected Context context;
 
   // Constructors
-  public WSingleArrayAdapter(Context context, T[] data, W wonder) {
+  public WArrayAdapter(Context context, T[] data, W wonder) {
     super(context, 0, data);
     init(context, wonder);
   }
 
-  public WSingleArrayAdapter(Context context, List<T> data, W wonder) {
+  public WArrayAdapter(Context context, List<T> data, W wonder) {
     super(context, 0, data);
     init(context, wonder);
   }
@@ -56,7 +55,7 @@ public class WSingleArrayAdapter<T, W extends SingleWonder<T, W>> extends ArrayA
     final W w;
     if (convertView == null) {
       w = wonder.newInstance();
-      convertView = w.inflateView(inflater, parent);
+      convertView = w.inflate(inflater, parent);
       convertView.setTag(w);
     } else {
       w = (W) convertView.getTag();

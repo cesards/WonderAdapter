@@ -25,5 +25,5 @@ import android.view.ViewGroup;
 public interface CursorWonder<W> extends BaseWonder<W> {
   public void bind(Context context, Cursor cursor);
 
-  public View inflateView(LayoutInflater inflater, ViewGroup parent);
+  public View inflate(LayoutInflater inflater, ViewGroup parent);
 }

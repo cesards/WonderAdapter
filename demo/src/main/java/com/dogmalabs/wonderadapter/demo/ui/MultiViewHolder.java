@@ -57,7 +57,7 @@ public class MultiViewHolder implements MultiWonder<MultiViewHolder> {
     }
   }
 
-  @Override public View inflateView(LayoutInflater inflater, ViewGroup parent, int viewType) {
+  @Override public View inflate(LayoutInflater inflater, ViewGroup parent, int viewType) {
     View view;
     if (viewType == VIEW_ROW) {
       view = inflater.inflate(R.layout.row_wonder, parent, false);

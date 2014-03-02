@@ -21,7 +21,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.dogmalabs.wonderadapter.adapter.WonderAdapter;
 import com.dogmalabs.wonderadapter.demo.R;
+import com.dogmalabs.wonderadapter.demo.model.Wonder;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -30,6 +32,9 @@ public class MainActivity extends ActionBarActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.inject(this);
+
+    WonderAdapter<Wonder> adapter = new WonderAdapter();
+
   }
 
   @OnClick(R.id.single_view_arrayadapter) public void onSingleViewArrayAdapterClick() {

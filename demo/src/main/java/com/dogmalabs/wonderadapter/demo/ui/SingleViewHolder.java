@@ -44,7 +44,7 @@ public class SingleViewHolder implements SingleWonder<Wonder, SingleViewHolder> 
     titleView.setText(item.getTitle());
   }
 
-  @Override public View inflateView(LayoutInflater inflater, ViewGroup parent) {
+  @Override public View inflate(LayoutInflater inflater, ViewGroup parent) {
     View view = inflater.inflate(R.layout.row_wonder, parent, false);
     ButterKnife.inject(this, view);
     return view;

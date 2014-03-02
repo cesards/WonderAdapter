@@ -2,7 +2,7 @@ package com.dogmalabs.wonderadapter.demo.ui.activity;
 
 import android.database.Cursor;
 import android.net.Uri;
-import com.dogmalabs.wonderadapter.adapter.WMultiArrayAdapter;
+import com.dogmalabs.wonderadapter.adapter.WBaseAdapter;
 import com.dogmalabs.wonderadapter.demo.db.Contract;
 import com.dogmalabs.wonderadapter.demo.db.provider.cursor.WonderCursor;
 import com.dogmalabs.wonderadapter.demo.model.Wonder;
@@ -25,10 +25,13 @@ public class MultipleViewActivity extends BaseActivity {
     // This should be in background task
     Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 
-    WMultiArrayAdapter<MultiViewHolder> adapter =
-        new WMultiArrayAdapter<>(this, getData(cursor), new MultiViewHolder());
+    WBaseAdapter<MultiViewHolder> adapter =
+        new WBaseAdapter<>(this, getData(cursor), new MultiViewHolder());
 
     listView.setAdapter(adapter);
+
+
+
   }
 
   private List getData(Cursor cursor) {

@@ -44,7 +44,7 @@ public class CursorViewHolder implements CursorWonder<CursorViewHolder> {
     return new CursorViewHolder();
   }
 
-  @Override public View inflateView(LayoutInflater inflater, ViewGroup parent) {
+  @Override public View inflate(LayoutInflater inflater, ViewGroup parent) {
     View view = inflater.inflate(R.layout.row_wonder, parent, false);
     ButterKnife.inject(this, view);
     return view;

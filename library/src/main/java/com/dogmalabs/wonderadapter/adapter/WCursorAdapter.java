@@ -60,7 +60,7 @@ public class WCursorAdapter<W extends CursorWonder<W>> extends CursorAdapter {
   @Override
   public View newView(Context context, Cursor cursor, ViewGroup parent) {
     final W w = wonder.newInstance();
-    View convertView = w.inflateView(inflater, parent);
+    View convertView = w.inflate(inflater, parent);
     convertView.setTag(w);
     return convertView;
   }

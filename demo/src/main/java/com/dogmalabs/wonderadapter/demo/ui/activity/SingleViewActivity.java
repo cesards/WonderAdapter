@@ -18,12 +18,10 @@ package com.dogmalabs.wonderadapter.demo.ui.activity;
 
 import android.database.Cursor;
 import android.net.Uri;
-import com.dogmalabs.wonderadapter.adapter.WMultiArrayAdapter;
-import com.dogmalabs.wonderadapter.adapter.WSingleArrayAdapter;
+import com.dogmalabs.wonderadapter.adapter.WArrayAdapter;
 import com.dogmalabs.wonderadapter.demo.db.Contract;
 import com.dogmalabs.wonderadapter.demo.db.provider.cursor.WonderCursor;
 import com.dogmalabs.wonderadapter.demo.model.Wonder;
-import com.dogmalabs.wonderadapter.demo.ui.MultiViewHolder;
 import com.dogmalabs.wonderadapter.demo.ui.SingleViewHolder;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +37,8 @@ public class SingleViewActivity extends BaseActivity {
     // This should be in background task
     Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 
-    WSingleArrayAdapter<Wonder, SingleViewHolder> adapter =
-        new WSingleArrayAdapter(this, getData(cursor), new SingleViewHolder());
+    WArrayAdapter<Wonder, SingleViewHolder> adapter =
+        new WArrayAdapter(this, getData(cursor), new SingleViewHolder());
     listView.setAdapter(adapter);
   }
 

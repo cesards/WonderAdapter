@@ -24,7 +24,7 @@ import android.widget.BaseAdapter;
 import com.dogmalabs.wonderadapter.MultiWonder;
 import java.util.List;
 
-public class WMultiArrayAdapter<W extends MultiWonder<W>> extends BaseAdapter {
+public class WBaseAdapter<W extends MultiWonder<W>> extends BaseAdapter {
 
   // Controller/logic fields
   private W wonder;
@@ -33,7 +33,7 @@ public class WMultiArrayAdapter<W extends MultiWonder<W>> extends BaseAdapter {
   protected Context context;
 
   // Constructors
-  public WMultiArrayAdapter(Context context, List<Object> data, W wonder) {
+  public WBaseAdapter(Context context, List<Object> data, W wonder) {
     this.context = context;
     this.data = data;
     this.wonder = wonder;
@@ -69,7 +69,7 @@ public class WMultiArrayAdapter<W extends MultiWonder<W>> extends BaseAdapter {
     if (convertView == null) {
       viewType = getItemViewType(position);
       w = wonder.newInstance();
-      convertView = w.inflateView(inflater, parent, viewType);
+      convertView = w.inflate(inflater, parent, viewType);
       convertView.setTag(w);
     } else {
       w = (W) convertView.getTag();

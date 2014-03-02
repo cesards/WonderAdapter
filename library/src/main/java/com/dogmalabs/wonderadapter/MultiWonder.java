@@ -29,5 +29,5 @@ public interface MultiWonder<W> extends BaseWonder<W> {
 
   public int getViewType(Object object);
 
-  public View inflateView(LayoutInflater inflater, ViewGroup parent, int viewType);
+  public View inflate(LayoutInflater inflater, ViewGroup parent, int viewType);
 }

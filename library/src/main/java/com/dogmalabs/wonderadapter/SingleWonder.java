@@ -24,5 +24,5 @@ import android.view.ViewGroup;
 public interface SingleWonder<T, W extends SingleWonder<T, W>> extends BaseWonder<W> {
   public void bind(Context context, T item);
 
-  public View inflateView(LayoutInflater inflater, ViewGroup parent);
+  public View inflate(LayoutInflater inflater, ViewGroup parent);
 }
