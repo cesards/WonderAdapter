@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.dogmalabs.wonderadapter.adapter.WonderAdapter;
+import com.dogmalabs.wonderadapter.renderers.WonderAdapter;
 import com.dogmalabs.wonderadapter.demo.R;
 import com.dogmalabs.wonderadapter.demo.model.Wonder;
 
@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
     setContentView(R.layout.activity_main);
     ButterKnife.inject(this);
 
-    WonderAdapter<Wonder> adapter = new WonderAdapter();
+    WonderAdapter adapter = new WonderAdapter();
 
   }
 
